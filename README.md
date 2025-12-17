@@ -1,7 +1,9 @@
 # @atmoner/nuxt-electron
 
-[![npm version][npm-version-src]][npm-version-href]
-[![Publish to NPM](https://github.com/atmoner/nuxt-electron/actions/workflows/publish.yml/badge.svg)](https://github.com/atmoner/nuxt-electron/actions/workflows/publish.yml)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![Nuxt JS](https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxt&logoColor=#00DC82)
+![Electron.js](https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white)
 
 Nuxt 4 module for seamless Electron integration with Electron Forge.
 
