@@ -1,6 +1,6 @@
 {
   "name": "@atmoner/nuxt-electron",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Nuxt 4 module for Electron integration with Electron Forge",
   "author": "atmoner",
   "license": "MIT",
