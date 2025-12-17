@@ -5,7 +5,6 @@
   "author": "atmoner",
   "license": "MIT",
   "type": "module",
-  "main": "main.js",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -31,7 +30,7 @@
     "dev": "node bin/nuxt-electron-dev.cjs playground",
     "dev:nuxt": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "dev:prepare": "nuxt-module-build build && nuxi prepare playground",
     "release": "npm run prepack && npm publish",
     "lint": "eslint .",
     "test": "vitest run",
