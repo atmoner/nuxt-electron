@@ -17,6 +17,37 @@ Nuxt 4 module for seamless Electron integration with Electron Forge.
 
 ## Quick Setup
 
+### Method 1: Automatic Setup (Recommended)
+
+The easiest way to get started is using the init command:
+
+```bash
+# Using npx (no installation required)
+npx @atmoner/nuxt-electron init
+
+# Or if you have the package installed
+npm exec nuxt-electron-init
+```
+
+This will automatically:
+
+- ✅ Create `main.js` (Electron main process)
+- ✅ Create `forge.config.cjs` (Electron Forge configuration)
+- ✅ Create `scripts/dev-electron.js` (Development script)
+- ✅ Update your `package.json` with required scripts and dependencies
+- ✅ Add the module to your `nuxt.config.ts`
+- ✅ Install all required dependencies
+
+Then just run:
+
+```bash
+npm run electron:dev
+```
+
+That's it! Your Nuxt + Electron app is ready ✨
+
+### Method 2: Manual Setup
+
 1. Add `@atmoner/nuxt-electron` dependency to your project
 
 ```bash
@@ -34,34 +65,34 @@ pnpm add -D @atmoner/nuxt-electron
 
 ```typescript
 export default defineNuxtConfig({
-  modules: [
-    '@atmoner/nuxt-electron'
-  ],
-  
+  modules: ["@atmoner/nuxt-electron"],
+
   electron: {
     // Module options
-  }
+  },
 })
 ```
 
 3. Install Electron dependencies
 
 ```bash
-npm install --save-dev electron @electron-forge/cli @electron-forge/maker-squirrel @electron-forge/maker-zip @electron-forge/maker-deb @electron-forge/maker-rpm @electron-forge/plugin-auto-unpack-natives @electron-forge/plugin-fuses @electron/fuses
-npm install electron-squirrel-startup
+npm install --save-dev electron @electron-forge/cli @electron-forge/maker-squirrel @electron-forge/maker-zip @electron-forge/maker-deb @electron-forge/maker-rpm @electron-forge/plugin-fuses @electron/fuses
 ```
 
-4. Create `main.js` in your project root (or copy from templates)
-
-5. Create `forge.config.js` in your project root (or copy from templates)
-
-That's it! You can now run your Nuxt + Electron app ✨
+4. Create required files (or copy from `templates/` directory):
+   - `main.js` - Electron main process
+   - `forge.config.cjs` - Electron Forge configuration
+   - `scripts/dev-electron.js` - Development script
 
 ## Usage
 
 ### Development
 
 ```bash
+# If you used the automatic setup
+npm run electron:dev
+
+# Or manually
 npm run dev
 ```
 
@@ -70,10 +101,11 @@ This will start both the Nuxt dev server and Electron automatically.
 ### Building
 
 ```bash
-# Build Nuxt app
-npm run build
+# Build for production
+npm run electron:build
 
-# Package Electron app
+# Or step by step
+npm run build
 npx electron-forge make
 ```
 
@@ -86,31 +118,32 @@ export default defineNuxtConfig({
   electron: {
     // Enable/disable the module
     enabled: true,
-    
+
     // Electron main file
-    main: 'main.js',
-    
+    main: "main.js",
+
     // Forge config file
-    forgeConfig: 'forge.config.js',
-    
+    forgeConfig: "forge.config.js",
+
     // Nuxt dev server port
     port: 3000,
-    
+
     // Auto-start Electron in dev mode
     autoStart: true,
-    
+
     // Delay before starting Electron (ms)
     startDelay: 5000,
-    
+
     // Kill existing processes on start
-    killExisting: true
-  }
+    killExisting: true,
+  },
 })
 ```
 
 ### Templates
 
 The module provides default templates for:
+
 - `main.js` - Electron main process
 - `forge.config.js` - Electron Forge configuration
 
@@ -133,17 +166,18 @@ your-project/
 
 ## Package.json Scripts
 
-Update your `package.json`:
+After running `npx @atmoner/nuxt-electron init`, your `package.json` will include:
 
 ```json
 {
+  "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "electron:dev": "nuxt dev",
+    "electron:dev": "node scripts/dev-electron.js",
     "electron:build": "nuxt build && electron-forge make"
   }
 }
@@ -203,6 +237,7 @@ export const makers = [
 ### Port Already in Use
 
 If you see "Port 24678 is already in use":
+
 - The module automatically kills existing processes when `killExisting: true`
 - Manually kill processes: `pkill -f "nuxt dev"`
 
@@ -246,11 +281,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 [MIT](./LICENSE) License © 2025 [atmoner](https://github.com/atmoner)
 
 <!-- Badges -->
+
 [npm-version-src]: https://img.shields.io/npm/v/@atmoner/nuxt-electron/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@atmoner/nuxt-electron
-
 [npm-downloads-src]: https://img.shields.io/npm/dm/@atmoner/nuxt-electron.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@atmoner/nuxt-electron
-
 [license-src]: https://img.shields.io/npm/l/@atmoner/nuxt-electron.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@atmoner/nuxt-electron

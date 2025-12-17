@@ -1,11 +1,15 @@
 {
   "name": "@atmoner/nuxt-electron",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "Nuxt 4 module for Electron integration with Electron Forge",
   "author": "atmoner",
   "license": "MIT",
   "type": "module",
   "main": "main.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
@@ -14,9 +18,13 @@
     }
   },
   "types": "./dist/types.d.ts",
+  "bin": {
+    "nuxt-electron-init": "./bin/nuxt-electron-init.cjs"
+  },
   "files": [
     "dist",
-    "templates"
+    "templates",
+    "bin"
   ],
   "scripts": {
     "prepack": "nuxt-module-build build",
