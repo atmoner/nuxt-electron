@@ -1,0 +1,75 @@
+{
+  "name": "@atmoner/nuxt-electron",
+  "version": "0.1.0",
+  "description": "Nuxt 4 module for Electron integration with Electron Forge",
+  "author": "atmoner",
+  "license": "MIT",
+  "type": "module",
+  "main": "main.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "node bin/nuxt-electron-dev.cjs playground",
+    "dev:nuxt": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run prepack && npm publish",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.13.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.10.2",
+    "@electron-forge/maker-deb": "^7.10.2",
+    "@electron-forge/maker-rpm": "^7.10.2",
+    "@electron-forge/maker-squirrel": "^7.10.2",
+    "@electron-forge/maker-zip": "^7.10.2",
+    "@electron-forge/plugin-fuses": "^7.10.2",
+    "@electron/fuses": "^2.0.0",
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.5.0",
+    "@nuxt/module-builder": "^0.8.0",
+    "@nuxt/schema": "^3.13.0",
+    "@nuxt/test-utils": "^3.14.0",
+    "changelogen": "^0.5.5",
+    "electron": "^39.2.7",
+    "eslint": "^9.9.0",
+    "nuxi": "^3.31.2",
+    "nuxt": "^3.13.0",
+    "typescript": "latest",
+    "unbuild": "^3.6.1",
+    "vitest": "^2.0.5",
+    "vue-tsc": "^2.0.29"
+  },
+  "peerDependencies": {
+    "@electron-forge/cli": "^7.0.0",
+    "electron": "^30.0.0 || ^31.0.0 || ^32.0.0 || ^33.0.0 || ^34.0.0 || ^35.0.0 || ^36.0.0 || ^37.0.0 || ^38.0.0 || ^39.0.0"
+  },
+  "keywords": [
+    "nuxt",
+    "nuxt4",
+    "electron",
+    "electron-forge",
+    "desktop",
+    "cross-platform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atmoner/nuxt-electron"
+  }
+}
