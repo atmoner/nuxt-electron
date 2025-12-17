@@ -1,8 +1,7 @@
 # @atmoner/nuxt-electron
 
 [![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
+[![Publish to NPM](https://github.com/atmoner/nuxt-electron/actions/workflows/publish.yml/badge.svg)](https://github.com/atmoner/nuxt-electron/actions/workflows/publish.yml)
 
 Nuxt 4 module for seamless Electron integration with Electron Forge.
 
