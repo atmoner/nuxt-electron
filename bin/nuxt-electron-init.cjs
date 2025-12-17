@@ -219,6 +219,7 @@ function updatePackageJson() {
   }
 
   const requiredDevDeps = {
+    "@atmoner/nuxt-electron": "latest",
     "@electron-forge/cli": "^7.10.2",
     "@electron-forge/maker-deb": "^7.10.2",
     "@electron-forge/maker-rpm": "^7.10.2",
