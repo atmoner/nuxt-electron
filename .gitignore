@@ -8,3 +8,6 @@ dist
 .vscode
 *.tsbuildinfo
 .npmrc
+main.js
+forge.config.cjs
+scripts/dev-electron.js
