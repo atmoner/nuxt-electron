@@ -33,6 +33,8 @@ npm exec nuxt-electron-init
 
 This will automatically:
 
+- ✅ Check if Nuxt is installed
+- ✅ Install Nuxt automatically if not present (runs `npm create nuxt@latest new-nuxt-electron`)
 - ✅ Create `main.js` (Electron main process)
 - ✅ Create `forge.config.cjs` (Electron Forge configuration)
 - ✅ Create `scripts/dev-electron.js` (Development script)
@@ -47,6 +49,8 @@ npm run electron:dev
 ```
 
 That's it! Your Nuxt + Electron app is ready ✨
+
+> **Note:** If Nuxt was not installed, the init command will create it in a `new-nuxt-electron` directory. You'll need to run `cd new-nuxt-electron` before running the dev command.
 
 ### Method 2: Manual Setup
 
