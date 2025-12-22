@@ -341,6 +341,20 @@ try {
   )
 }
 
-console.log("\n🎉 Setup complete! You can now run:")
-console.log("   npm run electron:dev    - Start development")
-console.log("   npm run electron:build  - Build for production")
+// Determine if Nuxt was installed by this script
+const nuxtWasInstalled = (() => {
+  // If we changed directory to new-nuxt-electron, Nuxt was installed
+  try {
+    // Check if current directory ends with new-nuxt-electron
+    return path.basename(process.cwd()) === "new-nuxt-electron"
+  } catch {
+    return false
+  }
+})()
+
+console.log("\n🎉 Setup complete! You can now run:\n")
+if (nuxtWasInstalled) {
+  console.log("   cd new-nuxt-electron")
+}
+console.log("   npm run electron:dev    # Start development")
+console.log("   npm run electron:build  # Build for production")
