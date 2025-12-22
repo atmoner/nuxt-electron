@@ -260,7 +260,7 @@ function checkNuxtInstallation() {
       return
     }
 
-    console.log("⚠️  Nuxt is not installed. Installing now...")
+    console.log("⚠️ Nuxt is not installed. Installing now...")
     console.log("🚀 Running: npm create nuxt@latest new-nuxt-electron\n")
     execSync("npm create nuxt@latest new-nuxt-electron", {
       stdio: "inherit",
@@ -279,7 +279,7 @@ function updateNuxtConfig() {
   const nuxtConfigPath = path.join(process.cwd(), "nuxt.config.ts")
 
   if (!fs.existsSync(nuxtConfigPath)) {
-    console.log("⚠️  nuxt.config.ts not found, skipping...")
+    console.log("⚠️ nuxt.config.ts not found, skipping...")
     return
   }
 
@@ -317,7 +317,7 @@ checkNuxtInstallation()
 Object.entries(templates).forEach(([filename, content]) => {
   const filePath = path.join(process.cwd(), filename)
   if (fs.existsSync(filePath)) {
-    console.log(`⚠️  ${filename} already exists, skipping...`)
+    console.log(`⚠️ ${filename} already exists, skipping...`)
   } else {
     createFile(filePath, content)
   }
