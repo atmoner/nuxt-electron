@@ -244,6 +244,35 @@ function updatePackageJson() {
   console.log("✅ Updated package.json")
 }
 
+function checkNuxtInstallation() {
+  try {
+    // Check if nuxt.config.ts exists
+    const nuxtConfigPath = path.join(process.cwd(), "nuxt.config.ts")
+    if (fs.existsSync(nuxtConfigPath)) {
+      console.log("✅ Nuxt is already installed")
+      return
+    }
+
+    // Check if node_modules/nuxt exists
+    const nuxtPath = path.join(process.cwd(), "node_modules", "nuxt")
+    if (fs.existsSync(nuxtPath)) {
+      console.log("✅ Nuxt is already installed")
+      return
+    }
+
+    console.log("⚠️  Nuxt is not installed. Installing now...")
+    console.log("🚀 Running: npm create nuxt@latest new-nuxt-electron\n")
+    execSync("npm create nuxt@latest new-nuxt-electron", {
+      stdio: "inherit",
+      shell: true,
+    })
+    console.log("\n✅ Nuxt installation complete!")
+  } catch (error) {
+    console.error("❌ Failed to install Nuxt:", error.message)
+    process.exit(1)
+  }
+}
+
 function updateNuxtConfig() {
   const nuxtConfigPath = path.join(process.cwd(), "nuxt.config.ts")
 
@@ -278,6 +307,9 @@ function updateNuxtConfig() {
 }
 
 console.log("🚀 Initializing @atmoner/nuxt-electron...\n")
+
+// Check if Nuxt is installed
+checkNuxtInstallation()
 
 // Create files
 Object.entries(templates).forEach(([filename, content]) => {
