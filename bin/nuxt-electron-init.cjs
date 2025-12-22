@@ -195,6 +195,8 @@ function updatePackageJson() {
 
   if (!fs.existsSync(packageJsonPath)) {
     console.error("❌ package.json not found in current directory")
+    execSync("npm init -y", { stdio: "inherit", cwd: process.cwd() })
+
     process.exit(1)
   }
 
