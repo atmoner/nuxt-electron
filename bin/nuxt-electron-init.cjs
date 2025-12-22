@@ -267,6 +267,8 @@ function checkNuxtInstallation() {
       shell: true,
     })
     console.log("\n✅ Nuxt installation complete!")
+    process.chdir("new-nuxt-electron")
+    console.log("📁 Changed directory to new-nuxt-electron")
   } catch (error) {
     console.error("❌ Failed to install Nuxt:", error.message)
     process.exit(1)
